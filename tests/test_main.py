@@ -41,7 +41,8 @@ def test_run_scrapy(mock_dirs):
         if str(file).endswith('.csv')
     ]
     assert 'results' in dirs, (
-        'Убедитесь что в директории проекта создается директория `results` для '
+        'Убедитесь что в директории проекта создается '
+        'директория `results` для '
         'вывода в файл результатов.'
     )
     assert len(output_files) == 2, (
