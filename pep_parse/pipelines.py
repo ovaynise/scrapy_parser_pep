@@ -22,14 +22,13 @@ class PepParsePipeline:
         self.output_file = self.results_dir / ('status_'
                                                f'summary_{current_time}.csv')
 
-        with open(
-                self.output_file,
-                'w',
-                newline='',
-                encoding='utf-8') as csvfile:
-            writer = csv.DictWriter(
-                csvfile, fieldnames=['Статус', 'Количество'])
+        csvfile = open(self.output_file, 'w', newline='', encoding='utf-8')
+        try:
+            writer = csv.DictWriter(csvfile,
+                                    fieldnames=['Статус', 'Количество'])
             writer.writeheader()
+        finally:
+            csvfile.close()
 
     def process_item(self, item, spider):
         status = item.get('status')
